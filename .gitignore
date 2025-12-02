@@ -1,0 +1,25 @@
+# QGIS project lock files
+*.qgz~
+*.qgs~
+*.qgs.bak
+*.qgz.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+
+# Temporary files
+*.tmp
+*.temp
+*.log
