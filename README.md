@@ -1,19 +1,46 @@
-# Jen and Barry's Ice Cream Site Selection Project
+# Jen and Barry's Ice Cream Site Selection using PostGIS
+
+![Model Builder Workflow](docs/model-builder.png)
+
+## Assignment
+
+**Task:** Find the best locations for Jen and Barry to open an ice cream business.
+
+**Selection Criteria:**
+- Greater than 500 farms for milk production
+- A labor pool of at least 25,000 individuals between ages 18-64
+- A low crime index (≤ 0.02)
+- Population density < 150 people per square mile
+- Located near a university or college
+- At least one recreation area within 10 miles
+- Interstate within 20 miles
+
+**Tools:** SQL in PostGIS + QGIS for visualization
+
+---
 
 ## Project Overview
 
-This project automates the site selection process for Jen and Barry's ice cream business using **PostGIS spatial analysis**. The goal is to identify the best locations for opening an ice cream business by applying multiple spatial and demographic criteria to filter candidate cities.
+This project uses **PostGIS spatial analysis** to identify suitable locations for an ice cream business based on multiple spatial and demographic criteria. The solution automates the site selection process using SQL queries and spatial functions.
 
 ### Objective
 
-Find optimal locations that meet all of Jen and Barry's business requirements:
-- Sufficient milk production capacity (farms)
-- Adequate labor pool (working-age population)
-- Low crime rates
-- Appropriate population density
-- Proximity to educational institutions (universities)
-- Access to recreation areas
-- Access to major transportation routes (interstates)
+Find cities that meet all of the following criteria:
+
+1. **County-level requirements:**
+   - Sufficient milk production capacity (> 500 farms)
+   - Adequate labor pool (≥ 25,000 people aged 18-64)
+   - Appropriate population density (< 150 per sq mile)
+
+2. **City-level requirements:**
+   - Low crime rates (crime index ≤ 0.02)
+   - Has a university or college
+
+3. **Spatial requirements:**
+   - Within 10 miles of a recreation area
+   - Within 20 miles of an interstate
+
+**Expected Results:** 43 counties → 11 suitable counties → 9 suitable cities → 7 near interstate → **4 final cities**
 
 ---
 
@@ -22,15 +49,6 @@ Find optimal locations that meet all of Jen and Barry's business requirements:
 > **Project 4: Jen and Barry's Site Selection in PostGIS**
 >
 > **Scenario:** If you took GEOG 483, the first project had you finding the best locations for "Jen and Barry" to open an ice cream business. Your task is to import the project shapefiles into a PostGIS schema and then write a series of SQL statements that automate the site selection process.
->
-> **Jen and Barry's Selection Criteria:**
-> - Greater than 500 farms for milk production
-> - A labor pool of at least 25,000 individuals between the ages of 18 and 64 years
-> - A low crime index (less than or equal to 0.02)
-> - A population of less than 150 individuals per square mile
-> - Located near a university or college
-> - At least one recreation area within 10 miles
-> - Interstate within 20 miles
 >
 > **Expected Results:** You should narrow the cities down to **9**, based on the county- and city-level criteria. After evaluating the interstate and recreation area criteria, that should get you down to **4 cities**.
 
