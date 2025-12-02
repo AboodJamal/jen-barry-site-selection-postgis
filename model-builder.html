@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jen & Barry's Site Selection - Model Builder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #dde4ec;
+            background-image:
+                linear-gradient(rgba(180, 190, 210, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(180, 190, 210, 0.4) 1px, transparent 1px);
+            background-size: 20px 20px;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #333;
+        }
+
+        .legend-shape {
+            width: 45px;
+            height: 25px;
+            border: 2px solid;
+        }
+
+        .legend-shape.input {
+            background: linear-gradient(180deg, #b8d4f0 0%, #8ab8e0 100%);
+            border-color: #5a8ac4;
+            border-radius: 12px;
+        }
+
+        .legend-shape.tool {
+            background: linear-gradient(180deg, #fef3b5 0%, #f4d03f 100%);
+            border-color: #c9a227;
+            border-radius: 3px;
+        }
+
+        .legend-shape.derived {
+            background: linear-gradient(180deg, #b8f0c8 0%, #7dd89a 100%);
+            border-color: #4ac76d;
+            border-radius: 12px;
+        }
+
+        .model-container {
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+        }
+
+        .model-canvas {
+            position: relative;
+            width: 1150px;
+            height: 580px;
+        }
+
+        /* Node Styles */
+        .node {
+            position: absolute;
+            text-align: center;
+            font-size: 0.72rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.3;
+            z-index: 10;
+        }
+
+        .node.input {
+            background: linear-gradient(180deg, #b8d4f0 0%, #8ab8e0 100%);
+            border: 2px solid #5a8ac4;
+            border-radius: 50%;
+            width: 110px;
+            height: 55px;
+            color: #1a3a5c;
+            font-weight: 500;
+        }
+
+        .node.tool {
+            background: linear-gradient(180deg, #fef3b5 0%, #f4d03f 100%);
+            border: 2px solid #c9a227;
+            border-radius: 4px;
+            min-width: 90px;
+            height: 45px;
+            color: #5a4a00;
+            font-weight: 600;
+            padding: 5px 10px;
+        }
+
+        .node.derived {
+            background: linear-gradient(180deg, #b8f0c8 0%, #7dd89a 100%);
+            border: 2px solid #4ac76d;
+            border-radius: 50%;
+            min-width: 130px;
+            height: 60px;
+            color: #1a5c30;
+            padding: 5px 10px;
+        }
+
+        .node.final {
+            background: linear-gradient(180deg, #7dd89a 0%, #3cb860 100%);
+            border: 3px solid #27a34d;
+            border-radius: 50%;
+            width: 130px;
+            height: 65px;
+            color: #0d4020;
+            font-weight: 600;
+        }
+
+        /* SVG Arrows */
+        .arrows-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .arrow-line {
+            stroke: #444;
+            stroke-width: 1.5;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>🍦 Jen & Barry's Ice Cream Site Selection - Model Builder</h1>
+        <p>PostGIS Spatial Analysis Workflow</p>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-shape input"></div>
+            <span>Project Data</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-shape tool"></div>
+            <span>Tool</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-shape derived"></div>
+            <span>Derived Data</span>
+        </div>
+    </div>
+
+    <div class="model-container">
+        <div class="model-canvas">
+            <!-- SVG for arrows -->
+            <svg class="arrows-svg" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#444" />
+                    </marker>
+                </defs>
+
+                <!-- Row 1: Counties -->
+                <path class="arrow-line" d="M 115,35 L 155,35" />
+                <path class="arrow-line" d="M 260,35 L 300,35" />
+
+                <!-- Row 2: Cities -->
+                <path class="arrow-line" d="M 115,115 L 155,115" />
+                <path class="arrow-line" d="M 260,115 L 300,115" />
+
+                <!-- Merge to ST_Within -->
+                <path class="arrow-line" d="M 440,35 L 480,35 L 480,70 L 520,70" />
+                <path class="arrow-line" d="M 440,115 L 480,115 L 480,70 L 520,70" />
+
+                <!-- ST_Within to suitable_cities -->
+                <path class="arrow-line" d="M 620,70 L 660,70" />
+
+                <!-- Row 3: Interstates -->
+                <path class="arrow-line" d="M 115,210 L 155,210" />
+                <path class="arrow-line" d="M 260,210 L 300,210" />
+
+                <!-- suitable_cities to first Erase -->
+                <path class="arrow-line" d="M 795,70 L 850,70 L 850,140 L 600,140 L 600,175 L 640,175" />
+
+                <!-- interstates buffer to first Erase -->
+                <path class="arrow-line" d="M 450,210 L 500,210 L 500,175 L 640,175" />
+
+                <!-- First Erase to result -->
+                <path class="arrow-line" d="M 745,175 L 790,175" />
+
+                <!-- Row 4: Recreation Areas -->
+                <path class="arrow-line" d="M 115,310 L 155,310" />
+                <path class="arrow-line" d="M 260,310 L 300,310" />
+
+                <!-- cities_near_interstate to second ST_DWithin -->
+                <path class="arrow-line" d="M 930,175 L 980,175 L 980,250 L 600,250 L 600,285 L 640,285" />
+
+                <!-- recreation buffer to second ST_DWithin -->
+                <path class="arrow-line" d="M 450,310 L 500,310 L 500,285 L 640,285" />
+
+                <!-- Second ST_DWithin to final -->
+                <path class="arrow-line" d="M 745,285 L 790,285" />
+
+                <!-- Final to result -->
+                <path class="arrow-line" d="M 930,285 L 980,285 L 980,380 L 1020,380" />
+
+            </svg>
+
+            <!-- ============ ROW 1: Counties ============ -->
+            <div class="node input" style="left: 5px; top: 8px;">
+                jen_barry<br>.counties
+            </div>
+
+            <div class="node tool" style="left: 155px; top: 12px;">
+                WHERE Filter<br><small>3 criteria</small>
+            </div>
+
+            <div class="node derived" style="left: 300px; top: 5px;">
+                suitable_counties<br><small>Farms>500, Labor≥25K<br>Density<150< /small>
+            </div>
+
+            <!-- ============ ROW 2: Cities ============ -->
+            <div class="node input" style="left: 5px; top: 88px;">
+                jen_barry<br>.cities
+            </div>
+
+            <div class="node tool" style="left: 155px; top: 92px;">
+                WHERE Filter<br><small>2 criteria</small>
+            </div>
+
+            <div class="node derived" style="left: 300px; top: 85px;">
+                filtered_cities<br><small>Crime≤0.02<br>University=1</small>
+            </div>
+
+            <!-- ST_Within -->
+            <div class="node tool" style="left: 520px; top: 47px; width: 100px;">
+                ST_Within<br><small>Spatial Join</small>
+            </div>
+
+            <div class="node derived" style="left: 660px; top: 40px;">
+                suitable_cities<br><small>In suitable counties</small><br><b>9 cities</b>
+            </div>
+
+            <!-- ============ ROW 3: Interstates ============ -->
+            <div class="node input" style="left: 5px; top: 183px;">
+                jen_barry<br>.interstates
+            </div>
+
+            <div class="node tool" style="left: 155px; top: 187px;">
+                Buffer<br><small>20 miles</small>
+            </div>
+
+            <div class="node derived" style="left: 300px; top: 180px;">
+                Near Interstate<br>Buffer<br><small>105,600 feet</small>
+            </div>
+
+            <!-- ST_DWithin Interstate -->
+            <div class="node tool" style="left: 640px; top: 152px; width: 105px;">
+                ST_DWithin<br><small>20 mi / 105,600 ft</small>
+            </div>
+
+            <div class="node derived" style="left: 790px; top: 145px;">
+                cities_near<br>_interstate<br><small>Near highways</small>
+            </div>
+
+            <!-- ============ ROW 4: Recreation Areas ============ -->
+            <div class="node input" style="left: 5px; top: 283px;">
+                jen_barry<br>.recreationareas
+            </div>
+
+            <div class="node tool" style="left: 155px; top: 287px;">
+                Buffer<br><small>10 miles</small>
+            </div>
+
+            <div class="node derived" style="left: 300px; top: 280px;">
+                Near Recreation<br>Buffer<br><small>52,800 feet</small>
+            </div>
+
+            <!-- ST_DWithin Recreation -->
+            <div class="node tool" style="left: 640px; top: 262px; width: 105px;">
+                ST_DWithin<br><small>10 mi / 52,800 ft</small>
+            </div>
+
+            <div class="node derived" style="left: 790px; top: 255px;">
+                cities_near<br>_recreation<br><small>Near parks</small>
+            </div>
+
+            <!-- ============ FINAL RESULT ============ -->
+            <div class="node final" style="left: 1010px; top: 348px;">
+                Final Candidate<br>Cities<br><b>4 cities ⭐</b>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

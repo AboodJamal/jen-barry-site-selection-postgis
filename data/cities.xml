@@ -1,0 +1,50 @@
+<shapes>
+<pt name="Arcataburg" population="52345" crime_inde="0.019" university="0" x="-78.52825" y="40.9633"></pt>
+<pt name="Ashton" population="15230" crime_inde="0.017" university="1" x="-79.30734" y="41.26303"></pt>
+<pt name="Bishoptown" population="237890" crime_inde="0.022" university="0" x="-76.89398" y="39.98376"></pt>
+<pt name="Burlington" population="245000" crime_inde="0.024" university="1" x="-75.92686" y="41.18206"></pt>
+<pt name="Cumberland" population="20005" crime_inde="0.025" university="0" x="-78.01004" y="40.32945"></pt>
+<pt name="Cuppville" population="259000" crime_inde="0.039" university="1" x="-75.73112" y="39.99027"></pt>
+<pt name="Deasy-In-Hand" population="120500" crime_inde="0.045" university="0" x="-77.33962" y="40.11416"></pt>
+<pt name="Deasyburg" population="20300" crime_inde="0.098" university="1" x="-78.88886" y="39.85328"></pt>
+<pt name="Driggs" population="17580" crime_inde="0.016" university="1" x="-77.07742" y="41.19154"></pt>
+<pt name="Duncantown" population="14754" crime_inde="0.016" university="1" x="-79.68712" y="40.27682"></pt>
+<pt name="Eureka" population="78900" crime_inde="0.044" university="0" x="-76.74747" y="40.49941"></pt>
+<pt name="Fairfield" population="54230" crime_inde="0.019" university="1" x="-78.46815" y="40.40546"></pt>
+<pt name="Frisco" population="6200" crime_inde="0.016" university="1" x="-78.14196" y="40.66968"></pt>
+<pt name="Geyserville" population="35050" crime_inde="0.019" university="1" x="-78.587" y="40.22174"></pt>
+<pt name="Hopville" population="41073" crime_inde="0.087" university="0" x="-76.19444" y="40.39293"></pt>
+<pt name="Humboldtsburg" population="10025" crime_inde="0.023" university="1" x="-77.39515" y="40.55436"></pt>
+<pt name="Huntstown" population="7680" crime_inde="0.014" university="1" x="-78.39441" y="39.80153"></pt>
+<pt name="Independance" population="15355" crime_inde="0.02" university="0" x="-78.13386" y="39.88372"></pt>
+<pt name="Jackson" population="8530" crime_inde="0.011" university="0" x="-77.17567" y="40.62598"></pt>
+<pt name="King of Deasy" population="25500" crime_inde="0.022" university="1" x="-77.0438" y="40.7756"></pt>
+<pt name="Lancasterburg" population="4003" crime_inde="0.004" university="1" x="-79.38615" y="41.5422"></pt>
+<pt name="Lassen" population="18765" crime_inde="0.012" university="0" x="-78.60233" y="41.44326"></pt>
+<pt name="Lincoln" population="11366" crime_inde="0" university="0" x="-76.72851" y="41.01801"></pt>
+<pt name="Lompoctown" population="83674" crime_inde="0.028" university="0" x="-78.71599" y="40.52856"></pt>
+<pt name="Lone Pine" population="18345" crime_inde="0.001" university="0" x="-75.88896" y="40.31642"></pt>
+<pt name="Mad River" population="54678" crime_inde="0.023" university="0" x="-78.96543" y="40.11954"></pt>
+<pt name="Mammothburg" population="25678" crime_inde="0.013" university="0" x="-79.40634" y="40.7809"></pt>
+<pt name="Merckxville" population="80795" crime_inde="0.038" university="1" x="-77.73938" y="40.00208"></pt>
+<pt name="Miraleste" population="28400" crime_inde="0.035" university="1" x="-77.69761" y="41.24048"></pt>
+<pt name="Mojavetown" population="195678" crime_inde="0.02" university="1" x="-79.31121" y="40.26732"></pt>
+<pt name="Moshanon" population="31266" crime_inde="0.021" university="0" x="-76.32768" y="40.86107"></pt>
+<pt name="Nittanytown" population="85000" crime_inde="0.02" university="1" x="-77.88712" y="40.76094"></pt>
+<pt name="Preston" population="19800" crime_inde="0.012" university="1" x="-77.34718" y="39.76228"></pt>
+<pt name="Randsburg" population="3457" crime_inde="0.001" university="0" x="-76.6357" y="41.40229"></pt>
+<pt name="Saratoga" population="32015" crime_inde="0.019" university="1" x="-76.51102" y="41.1755"></pt>
+<pt name="Shasta" population="23567" crime_inde="0.004" university="1" x="-76.96437" y="41.38223"></pt>
+<pt name="Shingletown" population="19500" crime_inde="0.008" university="1" x="-75.95189" y="40.50742"></pt>
+<pt name="Sierratown" population="53000" crime_inde="0.03" university="0" x="-76.12285" y="40.74732"></pt>
+<pt name="Squirrelville" population="12300" crime_inde="0.005" university="0" x="-77.82549" y="40.98295"></pt>
+<pt name="Stowetown" population="37800" crime_inde="0.01" university="1" x="-75.5883" y="41.48617"></pt>
+<pt name="Tahoeville" population="35000" crime_inde="0.022" university="0" x="-79.07804" y="41.10383"></pt>
+<pt name="Trinity" population="87600" crime_inde="0.049" university="0" x="-79.68201" y="39.89012"></pt>
+<pt name="Universityville" population="46700" crime_inde="0.022" university="1" x="-77.5536" y="40.69521"></pt>
+<pt name="Victoria Falls" population="26580" crime_inde="0.013" university="0" x="-77.11571" y="40.32714"></pt>
+<pt name="Victory" population="10023" crime_inde="0.01" university="0" x="-76.00767" y="41.49232"></pt>
+<pt name="Walrathburg" population="21000" crime_inde="0.01" university="1" x="-76.2637" y="40.03208"></pt>
+<pt name="Whiskeytown" population="15600" crime_inde="0.019" university="1" x="-78.66044" y="41.08672"></pt>
+<pt name="Whitney" population="55600" crime_inde="0.006" university="1" x="-79.11538" y="40.52028"></pt>
+</shapes>
