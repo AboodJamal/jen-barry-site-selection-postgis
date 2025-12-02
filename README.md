@@ -280,6 +280,10 @@ Viceroy, Victoria, Virgo, Young
 | **Nittanytown** | Center | 85,000 | 0.020 | ✓ |
 | **Whitney** | Step | 55,600 | 0.006 | ✓ |
 
+### 🗺️ Spatial Output (QGIS Visualization)
+
+![QGIS Map Visualization](visual-outputs/canvas-layers-visual.png)
+
 ---
 
 ## Technical Implementation
