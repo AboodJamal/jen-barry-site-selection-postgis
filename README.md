@@ -17,9 +17,22 @@ Find optimal locations that meet all of Jen and Barry's business requirements:
 
 ---
 
-## Project Scenario
+## Original Project Requirements
 
-Jen and Barry are looking to open an ice cream business and need to find the best locations based on specific criteria. The selection process involves analyzing county-level demographics, city-level characteristics, and spatial relationships with infrastructure features like interstates and recreation areas.
+> **Project 4: Jen and Barry's Site Selection in PostGIS**
+>
+> **Scenario:** If you took GEOG 483, the first project had you finding the best locations for "Jen and Barry" to open an ice cream business. Your task is to import the project shapefiles into a PostGIS schema and then write a series of SQL statements that automate the site selection process.
+>
+> **Jen and Barry's Selection Criteria:**
+> - Greater than 500 farms for milk production
+> - A labor pool of at least 25,000 individuals between the ages of 18 and 64 years
+> - A low crime index (less than or equal to 0.02)
+> - A population of less than 150 individuals per square mile
+> - Located near a university or college
+> - At least one recreation area within 10 miles
+> - Interstate within 20 miles
+>
+> **Expected Results:** You should narrow the cities down to **9**, based on the county- and city-level criteria. After evaluating the interstate and recreation area criteria, that should get you down to **4 cities**.
 
 ---
 
@@ -413,18 +426,20 @@ For the complete SQL solution with detailed comments and test queries, see **[so
 HW1/
 ├── README.md                    # Project overview and documentation
 ├── solution.md                  # Complete SQL solution with step-by-step guide
-├── model-builder.html           # Interactive workflow visualization
-├── model-builder.png            # Workflow diagram screenshot
 ├── jen-barry-site-selection.qgz # QGIS project file
 ├── data/                        # Source shapefiles
 │   ├── counties.shp (+ .dbf, .prj, .shx)
 │   ├── cities.shp (+ .dbf, .prj, .shx)
 │   ├── interstates.shp (+ .dbf, .prj, .shx)
 │   └── recareas.shp (+ .dbf, .prj, .shx)
-├── docs/                        # Supplementary documentation
+├── docs/                        # Documentation and resources
+│   ├── model-builder.html               # Interactive workflow visualization
+│   ├── model-builder.png                # Workflow diagram screenshot
 │   ├── solution-explanation.md          # Detailed step-by-step explanation
-│   └── coordinate-transformation-alternatives.md  # Discussion on transformation vs geography
-└── visual-outputs/              # Canvas layer screenshots
+│   ├── coordinate-transformation-alternatives.md  # Transform vs geography discussion
+│   ├── original-solution.docx           # Original solution document
+│   └── lesson-4-advanced-postgres-postgis-topics.pdf  # Course reference material
+└── visual-outputs/              # QGIS screenshots
     ├── canvas-layers-names.png
     └── canvas-layers-visual.png
 ```
@@ -436,6 +451,7 @@ HW1/
 | Document | Description |
 |----------|-------------|
 | [solution.md](solution.md) | Complete SQL solution with all queries and expected results |
+| [docs/model-builder.html](docs/model-builder.html) | Interactive workflow visualization diagram |
 | [docs/solution-explanation.md](docs/solution-explanation.md) | Detailed explanation of each step and why it's needed |
 | [docs/coordinate-transformation-alternatives.md](docs/coordinate-transformation-alternatives.md) | Discussion on using geography type vs coordinate transformation |
 
