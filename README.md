@@ -149,7 +149,7 @@ HW1/
 │   ├── cities.shp
 │   ├── interstates.shp
 │   └── recareas.shp
-├── SOLUTION.md                  # Complete SQL solution with notes
+├── solution.md                  # Complete SQL solution with notes
 ├── README.md                    # This file
 └── fullHWSol.docx              # Original solution document
 ```
@@ -176,7 +176,7 @@ HW1/
    - Create spatial indexes
 
 3. **Run SQL Solution**
-   - Execute the SQL statements from `SOLUTION.md`
+   - Execute the SQL statements from `solution.md`
    - Follow the steps sequentially
    - Verify results at each stage
 
@@ -189,7 +189,7 @@ HW1/
 
 ## Solution File
 
-For the complete SQL solution with detailed comments and test queries, see **[SOLUTION.md](./SOLUTION.md)**.
+For the complete SQL solution with detailed comments and test queries, see **[solution.md](./solution.md)**.
 
 ---
 
