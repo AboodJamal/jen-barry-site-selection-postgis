@@ -447,7 +447,7 @@ For the complete SQL solution with detailed comments and test queries, see **[so
 ```
 HW1/
 ├── README.md                    # Project overview and documentation
-├── solution.md                  # Complete SQL solution with step-by-step guide
+├── REPORT.md                    # Complete technical report with SQL solution
 ├── jen-barry-site-selection.qgz # QGIS project file
 ├── data/                        # Source shapefiles
 │   ├── counties.shp (+ .dbf, .prj, .shx)
@@ -472,7 +472,7 @@ HW1/
 
 | Document | Description |
 |----------|-------------|
-| [solution.md](solution.md) | Complete SQL solution with all queries and expected results |
+| [REPORT.md](REPORT.md) | **Complete technical report** with full SQL solution, analysis, and findings |
 | [docs/model-builder.html](docs/model-builder.html) | Interactive workflow visualization diagram |
 | [docs/solution-explanation.md](docs/solution-explanation.md) | Detailed explanation of each step and why it's needed |
 | [docs/coordinate-transformation-alternatives.md](docs/coordinate-transformation-alternatives.md) | Discussion on using geography type vs coordinate transformation |

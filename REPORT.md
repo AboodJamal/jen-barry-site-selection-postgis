@@ -1,7 +1,33 @@
-# Jen and Barry's Ice Cream Site Selection - Complete SQL Solution
+# Jen and Barry's Ice Cream Site Selection - Technical Report
 
-## Overview
-This document contains the complete SQL solution for automating Jen and Barry's ice cream business site selection process using PostGIS spatial analysis.
+**Project:** Spatial Data Analysis - Homework 1  
+**Authors:** Abdallah Alharrem & Hossam Shehadeh  
+**Date:** December 2025  
+**Database:** PostgreSQL with PostGIS Extension  
+**Tools:** SQL, PostGIS, QGIS
+
+---
+
+## Executive Summary
+
+This report presents a comprehensive PostGIS-based spatial analysis solution for identifying optimal locations for Jen and Barry's ice cream business. Using spatial SQL queries and progressive filtering techniques, we analyzed 43 counties and 48 cities to identify **4 final candidate cities** that meet all business requirements.
+
+**Key Findings:**
+- **4 cities** meet all selection criteria
+- Located in counties with strong dairy farming infrastructure
+- All have universities, low crime rates, and proximity to recreation areas and interstates
+- Final candidates: Driggs, Geyserville, Nittanytown, and Whitney
+
+---
+
+## Table of Contents
+
+1. [Database Setup](#database-setup)
+2. [Data Verification](#data-verification)
+3. [Coordinate System Transformation](#coordinate-system-transformation)
+4. [Spatial Analysis Queries](#spatial-analysis-queries)
+5. [Results & Findings](#results--findings)
+6. [Conclusion](#conclusion)
 
 ---
 
@@ -608,7 +634,7 @@ JOIN jen_barry."jen_barry.recreationareas" AS r ON ST_DWithin(c.geom_2271, r.geo
 SELECT COUNT(*) AS final_candidates FROM jen_barry.final_candidate_cities; -- Expected: 4
 
 -- ===================
--- FINAL RESULTS
+-- FINAL RESULTS QUERIES
 -- ===================
 SELECT city_name, county_name, "POPULATION", "CRIME_INDE", "UNIVERSITY"
 FROM jen_barry.final_candidate_cities ORDER BY city_name;
@@ -622,22 +648,106 @@ UNION ALL SELECT 'final_candidate_cities', COUNT(*) FROM jen_barry.final_candida
 
 ---
 
-## Summary
+## Results & Findings
+
+### Filtering Progression
+
+The analysis progressively narrowed down candidates through 4 stages:
+
+| Stage | View Name | Count | Criteria Applied |
+|-------|-----------|-------|------------------|
+| 1 | `suitable_counties` | **11** | Farms > 500, Labor ≥ 25K, Density < 150 |
+| 2 | `suitable_cities` | **9** | Crime ≤ 0.02, Has University |
+| 3 | `cities_near_interstate` | **7** | Within 20 miles of interstate |
+| 4 | `final_candidate_cities` | **4** | Within 10 miles of recreation area |
 
 ### Final Results: 4 Candidate Cities
 
-| City | County | Population | Crime Index | Why Selected |
-|------|--------|------------|-------------|--------------|
-| **Driggs** | Bellows | 17,580 | 0.016 | All criteria met ✓ |
-| **Geyserville** | Taft | 35,050 | 0.019 | All criteria met ✓ |
-| **Nittanytown** | Center | 85,000 | 0.020 | All criteria met ✓ |
-| **Whitney** | Step | 55,600 | 0.006 | All criteria met ✓ |
+| City | County | Population | Crime Index | University | Selection Rationale |
+|------|--------|------------|-------------|------------|---------------------|
+| **Driggs** | Bellows | 17,580 | 0.016 | ✓ | Strong county infrastructure (847 farms, 71K workforce) |
+| **Geyserville** | Taft | 35,050 | 0.019 | ✓ | Largest county farm base (1,043 farms), interstate access |
+| **Nittanytown** | Center | 85,000 | 0.020 | ✓ | Largest city market, substantial workforce (90K) |
+| **Whitney** | Step | 55,600 | 0.006 | ✓ | Lowest crime rate, well-balanced demographics |
 
-### Filtering Funnel
+### Geographic Distribution
 
-```
-Counties (43) → Suitable Counties (11) → Filter by demographics
-Cities (48) → Suitable Cities (9) → Filter by crime + university
-         → Cities Near Interstate (7) → Filter by 20-mile proximity
-         → Final Candidates (4) → Filter by 10-mile recreation proximity
-```
+**Counties with Final Candidates:**
+- Bellows County (Driggs)
+- Center County (Nittanytown)
+- Step County (Whitney)
+- Taft County (Geyserville)
+
+All selected cities are well-distributed across suitable counties, providing geographic diversification for business expansion.
+
+### Validation
+
+**Data Integrity Checks:**
+- ✅ All 4 cities have crime index ≤ 0.02
+- ✅ All 4 cities have universities (UNIVERSITY = 1)
+- ✅ All 4 cities are in counties with > 500 farms
+- ✅ All 4 cities are within 20 miles of interstates
+- ✅ All 4 cities are within 10 miles of recreation areas
+
+---
+
+## Conclusion
+
+This spatial analysis successfully identified 4 optimal locations for Jen and Barry's ice cream business using PostGIS spatial functions and progressive filtering techniques.
+
+### Key Achievements
+
+1. **Data Integration:** Successfully imported and transformed spatial data from 4 shapefiles
+2. **Coordinate Transformation:** Converted from NAD27 (EPSG:4267) to PA State Plane South (EPSG:2271) for accurate distance calculations
+3. **Progressive Filtering:** Reduced 48 cities to 4 candidates through systematic application of 7 criteria
+4. **Spatial Analysis:** Used `ST_Within()` and `ST_DWithin()` for point-in-polygon and distance-based queries
+
+### Technical Highlights
+
+- **Performance Optimization:** Created GIST indexes on transformed geometry columns
+- **View-Based Architecture:** Built cascading views for maintainability and debugging
+- **Accurate Measurements:** Used projected coordinates (feet) instead of geographic (degrees)
+- **Data Validation:** Verified each step with row counts and sample queries
+
+### Final Recommendations
+
+All 4 candidate cities are viable locations:
+
+| City | Strengths |
+|------|-----------|
+| **Driggs** | Moderate population (17,580), low crime (0.016), strong county dairy infrastructure |
+| **Geyserville** | Larger market (35,050), good infrastructure access |
+| **Nittanytown** | Largest market (85,000), significant customer base |
+| **Whitney** | Very low crime rate (0.006), good balance of all factors |
+
+### Methodology Validation
+
+✅ County filtering: 43 → 11 counties (meets farm/labor/density requirements)  
+✅ City filtering: 48 → 9 cities (adds crime/university requirements)  
+✅ Interstate proximity: 9 → 7 cities (within 20 miles)  
+✅ Recreation proximity: 7 → 4 cities (within 10 miles)
+
+---
+
+## Appendix
+
+### Complete SQL Script
+
+The complete SQL script can be executed in order to reproduce all results. All queries are idempotent and can be run multiple times.
+
+### Distance Conversion Reference
+
+- 1 mile = 5,280 feet
+- 10 miles = 52,800 feet
+- 20 miles = 105,600 feet
+
+### SRID Reference
+
+- **EPSG:4267** - NAD27 Geographic (degrees)
+- **EPSG:2271** - NAD83 / Pennsylvania South (feet)
+
+---
+
+**Report prepared by:** Abdallah Alharrem & Hossam Shehadeh  
+**Course:** Spatial Data Analysis  
+**Assignment:** Homework 1 - Site Selection using PostGIS
