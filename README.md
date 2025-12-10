@@ -489,7 +489,9 @@ HW1/
 
 ---
 
-## Author
+## Authors
+
+**Abdallah Alharrem & Hossam Shehadeh**
 
 **Spatial Data Analysis - Homework 1**  
 Project 4: Jen and Barry's Site Selection using PostGIS
