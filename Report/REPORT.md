@@ -20,7 +20,7 @@ This report presents a comprehensive PostGIS-based spatial analysis solution for
 
 ### Analysis Workflow
 
-![Model Builder Workflow](docs/model-builder.png)
+![Model Builder Workflow](../docs/model-builder.png)
 
 *Figure 1: PostGIS analysis workflow showing progressive filtering from 43 counties to 4 final candidate cities*
 
@@ -757,11 +757,11 @@ After applying spatial proximity filters (interstate and recreation areas), **4 
 
 ### Spatial Visualization
 
-![QGIS Map Visualization](visual-outputs/canvas-layers-visual.png)
+![QGIS Map Visualization](../visual-outputs/canvas-layers-visual.png)
 
 *Figure 2: QGIS visualization showing the 4 final candidate cities with spatial layers including counties, interstates, and recreation areas*
 
-![QGIS Layers Panel](visual-outputs/canvas-layers-names.png)
+![QGIS Layers Panel](../visual-outputs/canvas-layers-names.png)
 
 *Figure 3: QGIS layers panel showing the data structure and layer organization*
 
